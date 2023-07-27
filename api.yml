@@ -10,10 +10,16 @@ security:
   - basic_auth: []
 paths:
   /zombie:
-    get:
+    post:
       summary: get zombie risk
       operationId: zombie
       description: zombie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
       responses:
         '200':
           description: 200 response
@@ -26,7 +32,16 @@ components:
     ZombieRisk:
       type: object
       properties:
+        location:
+          type: string
+        message:
+          type: string
         risk:
+          type: integer
+    Location:
+      type: object
+      properties:
+        location:
           type: string
 
   securitySchemes:

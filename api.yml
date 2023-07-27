@@ -1,0 +1,35 @@
+openapi: 3.0.0
+
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: Zombie API
+servers:
+  - url: https://zombie.151di5ffrvir.eu-gb.codeengine.appdomain.cloud
+security:
+  - basic_auth: []
+paths:
+  /zombie:
+    get:
+      summary: get zombie risk
+      operationId: zombie
+      description: zombie
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZombieRisk'
+components:
+  schemas:
+    ZombieRisk:
+      type: object
+      properties:
+        risk:
+          type: string
+
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
